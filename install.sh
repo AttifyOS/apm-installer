@@ -14,7 +14,7 @@ install_lxd() {
     DEB_LXD_INSTALLED=$(dpkg-query -W --showformat='${Status}\n' lxd 2>&1 |grep "install ok installed" || /bin/true)
 
     # Check if lxd snap package is already installed
-    SNAP_LXD_INSTALLED=$(snap list --color=never | grep lxd)
+    SNAP_LXD_INSTALLED=$(snap list --color=never | grep lxd || /bin/true)
 
     if [[ "" = "$DEB_LXD_INSTALLED" && "" = "$SNAP_LXD_INSTALLED" ]]; then
         # Neither snap nor lxd version is installed
