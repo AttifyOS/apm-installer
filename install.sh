@@ -20,9 +20,9 @@ install_lxd() {
         # Neither snap nor lxd version is installed
         DEBIAN_FRONTEND=noninteractive sudo apt install --yes snapd
         sudo snap install lxd
-        lxd init --auto
-    else
-        lxd init --auto
+        sudo lxd init --auto
+        sudo usermod -aG lxd $USER
+        newgrp lxd
     fi
 }
 
